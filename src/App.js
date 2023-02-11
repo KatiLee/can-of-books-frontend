@@ -5,7 +5,7 @@ import "./App.css";
 let SERVER = process.env.REACT_APP_SERVER;
 ///////////add to env
 
-class APP extends React.Component {
+class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
