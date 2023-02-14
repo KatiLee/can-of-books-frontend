@@ -3,7 +3,7 @@ import axios from "axios";
 import "./App.css";
 
 let SERVER = process.env.REACT_APP_SERVER;
-///////////add to env
+// add to env
 
 class App extends React.Component {
   constructor(props) {
