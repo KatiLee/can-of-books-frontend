@@ -32,9 +32,16 @@ class App extends React.Component {
   render() {
     let books = this.state.books.map((book) => (
       <Carousel.Item key={book._id}>
+        <img
+        className="d-block w-100"
+        src={'https://placekitten.com/200/300'}
+        alt="First slide"
+      />
+      <Carousel.Caption>
         <p>
           {book.title} is about {book.description}
         </p>
+        </Carousel.Caption>
       </Carousel.Item>
     ));
     return (
@@ -42,7 +49,8 @@ class App extends React.Component {
         <header>
           <h1>Neat Books in our DB</h1>
         </header>
-        <main>{this.state.books.length > 0 ? (
+        <main>
+          {this.state.books.length > 0 ? (
           <Carousel>{books}</Carousel>
         ) : (
           <p>The book collection is empty.</p>
