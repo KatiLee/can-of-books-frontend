@@ -1,8 +1,9 @@
 import React from "react";
 import axios from "axios";
 import "./App.css";
-import { Carousel } from "react-bootstrap";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
+import Carousel from 'react-bootstrap/Carousel';
 let SERVER = process.env.REACT_APP_SERVER;
 // add to env
 
@@ -34,7 +35,7 @@ class App extends React.Component {
       <Carousel.Item key={book._id}>
         <img
         className="d-block w-100"
-        src={'https://placekitten.com/200/300'}
+        src={'http://via.placeholder.com/840x360'}
         alt="First slide"
       />
       <Carousel.Caption>
