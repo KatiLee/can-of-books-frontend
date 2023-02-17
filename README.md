@@ -90,3 +90,22 @@ Start time: _____
 Finish time: _____
 
 Actual time needed to complete: _____
+
+              {/* <Carousel>{books}</Carousel>  */}
+
+           {/* <p>The book collection is empty.</p>  */}
+
+               // let books = this.state.books.map((book) => (
+    //   <Carousel.Item key={book._id}>
+    //     <img
+    //     className="d-block w-100"
+    //     src={'http://via.placeholder.com/840x360'}
+    //     alt="First slide"
+    //   />
+    //   <Carousel.Caption>
+    //     <p>
+    //       {book.title} is about {book.description}
+    //     </p>
+    //     </Carousel.Caption>
+    //   </Carousel.Item>
+    // ));

@@ -2,13 +2,10 @@ import React from "react";
 import axios from "axios";
 import "./App.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
-
-import CreateBook from "./components/CreateBook"
-import Carousel from 'react-bootstrap/Carousel';
-// import Books from "./components/Books";
+import CreateBook from "./components/CreateBook.js"
+import Books from "./components/Books.js";
 import { Container } from "react-bootstrap";
 let SERVER = process.env.REACT_APP_SERVER;
-// add to env
 
 class App extends React.Component {
   constructor(props) {
@@ -38,13 +35,15 @@ class App extends React.Component {
       available: event.target.available.checked
     };
     console.log(newBook);
-    this.postBook(newBook);
+    this.postBooks(newBook);
   };
-postBook = async (newBookObject) => {
+
+postBooks = async (newBookObject) => {
+  console.log('hello can we post?', newBookObject)
   try {
     let url = `${SERVER}/books`;
     let createdBook = await axios.post(url, newBookObject);
-    console.log(createdBook);
+    console.log(createdBook, 'createbook?');
     this.setState({
       books: [...this.state.books, createdBook.data],
     });
@@ -52,6 +51,7 @@ postBook = async (newBookObject) => {
     console.log('error: ', error.response.data);
   }
 };
+
 deleteBooks = async (id) => {
   try {
     let url = `${SERVER}/books/${id}`;
@@ -65,42 +65,25 @@ deleteBooks = async (id) => {
   }
 };
 
-
   componentDidMount() {
     this.getBooks();
   }
 
   render() {
-    let books = this.state.books.map((book) => (
-      <Carousel.Item key={book._id}>
-        <img
-        className="d-block w-100"
-        src={'http://via.placeholder.com/840x360'}
-        alt="First slide"
-      />
-      <Carousel.Caption>
-        <p>
-          {book.title} is about {book.description}
-        </p>
-        </Carousel.Caption>
-      </Carousel.Item>
-    ));
     return (
       <>
-        
         <Container>
-      <main>
-          <h1>Neat Books in our DB</h1>
-          {this.state.books.length > 0 ? (
-              // <Books
-              // books={this.state.books}
-              // deleteBooks={this.deleteBooks}
-              // />
-            <Carousel>{books}</Carousel> 
-         ) : ( 
-           <p>The book collection is empty.</p> 
+          <>
+            <h1>Neat Books in our DB</h1>
+            {this.state.books.length > 0 && (
+              <>
+                <Books
+                books={this.state.books}
+                deleteBooks={this.deleteBooks}
+                />
+           </>
         )}
-        </main>
+        </>
         <CreateBook handleBookSubmit={this.handleBookSubmit} />
         </Container>
       </>
