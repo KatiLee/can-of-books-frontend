@@ -89,19 +89,18 @@ deleteBooks = async (id) => {
       <>
         
         <Container>
-
+      <main>
           <h1>Neat Books in our DB</h1>
-          {this.state.books.length > 0 && (
-            <>
-              <Books
-              books={this.state.books}
-              deleteBooks={this.deleteBooks}
-              />
-            </>
-           /* <Carousel>{books}</Carousel> */
-         /* ) : ( */
-          /* <p>The book collection is empty.</p> */
+          {this.state.books.length > 0 ? (
+              // <Books
+              // books={this.state.books}
+              // deleteBooks={this.deleteBooks}
+              // />
+            <Carousel>{books}</Carousel> 
+         ) : ( 
+           <p>The book collection is empty.</p> 
         )}
+        </main>
         <CreateBook handleBookSubmit={this.handleBookSubmit} />
         </Container>
       </>
