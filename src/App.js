@@ -5,7 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import CreateBook from "./components/CreateBook"
 import Carousel from 'react-bootstrap/Carousel';
-// import Books from "./components/Books";
+import Books from "./components/Books";
 import { Container } from "react-bootstrap";
 let SERVER = process.env.REACT_APP_SERVER;
 // add to env
@@ -40,6 +40,7 @@ class App extends React.Component {
     console.log(newBook);
     this.postBook(newBook);
   };
+
 postBook = async (newBookObject) => {
   try {
     let url = `${SERVER}/books`;
@@ -52,6 +53,7 @@ postBook = async (newBookObject) => {
     console.log('error: ', error.response.data);
   }
 };
+
 deleteBooks = async (id) => {
   try {
     let url = `${SERVER}/books/${id}`;
@@ -64,7 +66,6 @@ deleteBooks = async (id) => {
     console.log('we have errors: ', error.response.data);
   }
 };
-
 
   componentDidMount() {
     this.getBooks();
@@ -89,18 +90,20 @@ deleteBooks = async (id) => {
       <>
         
         <Container>
-      <main>
-          <h1>Neat Books in our DB</h1>
-          {this.state.books.length > 0 ? (
-              // <Books
-              // books={this.state.books}
-              // deleteBooks={this.deleteBooks}
-              // />
-            <Carousel>{books}</Carousel> 
-         ) : ( 
+          <>
+            <h1>Neat Books in our DB</h1>
+            {this.state.books.length > 0 ? (
+              <>
+                <Books
+                books={this.state.books}
+                deleteBooks={this.deleteBooks}
+                />
+              {/* <Carousel>{books}</Carousel>  */}
+             </>
+            ) : ( 
            <p>The book collection is empty.</p> 
         )}
-        </main>
+        </>
         <CreateBook handleBookSubmit={this.handleBookSubmit} />
         </Container>
       </>
