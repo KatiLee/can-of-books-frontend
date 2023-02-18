@@ -5,6 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import CreateBook from "./components/CreateBook.js"
 import Books from "./components/Books.js";
 import { Container } from "react-bootstrap";
+
 let SERVER = process.env.REACT_APP_SERVER;
 
 class App extends React.Component {
@@ -65,6 +66,22 @@ deleteBooks = async (id) => {
   }
 };
 
+updateBooks = async (bookToUpdate) => {
+  try {
+    let updateURL = `${SERVER}/books/${bookToUpdate._id}`;
+    let newUpdatedBook = await axios.put(updateURL, bookToUpdate);
+    console.log(newUpdatedBook, 'newupdatedbook');
+    let updatedBookArray = this.state.books.map((existingBook) => {
+      return existingBook._id === bookToUpdate._id
+        ? newUpdatedBook.data
+        : existingBook;
+    });
+    this.setState({
+      books: updatedBookArray,
+    });
+  } catch (error) {}
+};
+
   componentDidMount() {
     this.getBooks();
   }
@@ -80,6 +97,7 @@ deleteBooks = async (id) => {
                 <Books
                 books={this.state.books}
                 deleteBooks={this.deleteBooks}
+                updateBooks={this.updateBooks}
                 />
            </>
         )}
