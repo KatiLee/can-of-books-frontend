@@ -79,6 +79,7 @@ updateBooks = async (bookToUpdate) => {
     this.setState({
       books: updatedBookArray,
     });
+    this.refresh()
   } catch (error) {}
 };
 refresh = () => {

@@ -25,12 +25,12 @@ class UpdateBookForm extends React.Component {
         // this.setState({
         //     bookHasBeenUpdated: true,
         // })
-        this.refresh();
+        // this.refresh();
     };
 
-    refresh = () => {
-        window.location.reload(true);
-    }
+    // refresh = () => {
+    //     window.location.reload(true);
+    // }
 
     render() {
         return (
