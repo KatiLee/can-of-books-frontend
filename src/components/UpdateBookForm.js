@@ -14,8 +14,10 @@ class UpdateBookForm extends React.Component {
             _id: this.props.book._id,
             __v: this.props.book.__v
         }
+        
         console.log('HANDLE SUB', bookToUpdate);
         this.props.updateBooks(bookToUpdate)
+        window.location.reload(true);
     };
 
 
