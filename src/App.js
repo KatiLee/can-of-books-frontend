@@ -65,6 +65,22 @@ deleteBooks = async (id) => {
   }
 };
 
+updateBooks = async (bookToUpdate) => {
+  try {
+    let updateURL = `${SERVER}/books/${bookToUpdate._id}`;
+    let newUpdatedBook = await axios.put(updateURL, bookToUpdate);
+    console.log(newUpdatedBook);
+    let updatedBook = this.state.books.map((existingBook) => {
+      return existingBook._id === bookToUpdate._id
+        ? newUpdatedBook.data
+        : existingBook;
+    });
+    this.setState({
+      books: updatedBookArray,
+    });
+  } catch (error) {}
+};
+
   componentDidMount() {
     this.getBooks();
   }
@@ -80,6 +96,7 @@ deleteBooks = async (id) => {
                 <Books
                 books={this.state.books}
                 deleteBooks={this.deleteBooks}
+                updateBooks={this.updateBooks}
                 />
            </>
         )}
