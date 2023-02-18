@@ -70,7 +70,7 @@ updateBooks = async (bookToUpdate) => {
     let updateURL = `${SERVER}/books/${bookToUpdate._id}`;
     let newUpdatedBook = await axios.put(updateURL, bookToUpdate);
     console.log(newUpdatedBook);
-    let updatedBook = this.state.books.map((existingBook) => {
+    let updatedBookArray = this.state.books.map((existingBook) => {
       return existingBook._id === bookToUpdate._id
         ? newUpdatedBook.data
         : existingBook;
