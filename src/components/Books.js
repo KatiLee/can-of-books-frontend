@@ -49,7 +49,7 @@ class Book extends Books {
             {this.state.showUpdateForm &&
             <UpdateBookForm
             updateBooks={this.props.updateBooks}
-            book={this.props.cat}
+            book={this.props.book}
             />
             }
          </>

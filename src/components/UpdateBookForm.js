@@ -11,7 +11,7 @@ class UpdateBookForm extends React.Component {
             title: event.target.title.value || this.props.book.title,
             description: event.target.description.value || this.props.book.description,
             available: event.target.available.checked,
-            _id: this.props.book_id,
+            _id: this.props.book._id,
             __v: this.props.book.__v
         }
         console.log('HANDLE SUB', bookToUpdate);
@@ -28,7 +28,7 @@ class UpdateBookForm extends React.Component {
                         <Form.Control type="text" placeholder={this.props.book.title} />
                         
                     </Form.Group>
-                    <Form.Group contorlId="description">
+                    <Form.Group controlId="description">
                         <Form.Label>Description</Form.Label>
                         <Form.Control type="text" placeholder={this.props.book.description} />
                     </Form.Group>
