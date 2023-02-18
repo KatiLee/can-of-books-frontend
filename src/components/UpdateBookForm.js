@@ -2,7 +2,12 @@ import React from "react";
 import { Button, Container, Form } from 'react-bootstrap';
 
 class UpdateBookForm extends React.Component {
-
+    constructor (props) {
+        super (props);
+        this.state = {
+        bookHasBeenUpdated: false
+    }
+    }
 
     handleSubmit = (event) => {
         event.preventDefault();
@@ -16,10 +21,16 @@ class UpdateBookForm extends React.Component {
         }
         
         console.log('HANDLE SUB', bookToUpdate);
-        this.props.updateBooks(bookToUpdate)
-        window.location.reload(true);
+        this.props.updateBooks(bookToUpdate);
+        // this.setState({
+        //     bookHasBeenUpdated: true,
+        // })
+        this.refresh();
     };
 
+    refresh = () => {
+        window.location.reload(true);
+    }
 
     render() {
         return (
@@ -37,7 +48,7 @@ class UpdateBookForm extends React.Component {
                     <Form.Group controlId="available">
                         <Form.Check type="checkbox" label="Available" defaultChecked={this.props.book.available} />
                     </Form.Group>
-                    <Button type="submit">Update Book</Button>
+                    <Button type="submit" >Update Book</Button>
                 </Form>
             </Container>
         );

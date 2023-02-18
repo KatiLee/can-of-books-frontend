@@ -81,7 +81,9 @@ updateBooks = async (bookToUpdate) => {
     });
   } catch (error) {}
 };
-
+refresh = () => {
+  window.location.reload(true);
+}
   componentDidMount() {
     this.getBooks();
   }
